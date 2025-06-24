@@ -1,0 +1,9 @@
+uid: '000006'
+category: data_control
+order: 20
+text_ja: 保存データは暗号化されていますか？
+text_en: ''
+type: text
+depends_on: []
+tags: []
+version: '2025-06-24'

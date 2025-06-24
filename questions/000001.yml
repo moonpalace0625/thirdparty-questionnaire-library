@@ -1,0 +1,9 @@
+uid: '000001'
+category: access_control
+order: 10
+text_ja: 多要素認証 (MFA) を必須にしていますか？
+text_en: ''
+type: text
+depends_on: []
+tags: []
+version: '2025-06-24'

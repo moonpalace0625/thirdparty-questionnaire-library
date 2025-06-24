@@ -1,0 +1,10 @@
+- key: access_control
+  order: 10
+  name_ja: アクセス制御
+  name_en: Access Control
+  description: 認証・認可・アカウント管理に関するコントロール。
+- key: data_control
+  order: 20
+  name_ja: データ管理
+  name_en: Data Control
+  description: データ保管、削除、バックアップ戦略など。

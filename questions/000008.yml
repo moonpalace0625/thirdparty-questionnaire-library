@@ -1,0 +1,9 @@
+uid: 000008
+category: data_control
+order: 40
+text_ja: バックアップデータの復旧テストは定期的に実施していますか？
+text_en: ''
+type: text
+depends_on: []
+tags: []
+version: '2025-06-24'

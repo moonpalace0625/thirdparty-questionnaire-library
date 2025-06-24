@@ -1,0 +1,29 @@
+
+name: CI / Lint / Build Index
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: pip install pyyaml pandas
+      - name: Build INDEX.md
+        run: python scripts/build_index.py
+      - name: Commit INDEX.md
+        run: |
+          git config --global user.email "github-actions@users.noreply.github.com"
+          git config --global user.name "github-actions"
+          git add docs/INDEX.md
+          git commit -m "chore: auto-update index" || echo "No changes"
+          git push || echo "No remote repo yet"

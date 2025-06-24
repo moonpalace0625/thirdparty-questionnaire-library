@@ -1,0 +1,9 @@
+uid: '000004'
+category: access_control
+order: 40
+text_ja: セッションタイムアウトは設定されていますか？
+text_en: ''
+type: text
+depends_on: []
+tags: []
+version: '2025-06-24'
