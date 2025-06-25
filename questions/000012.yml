@@ -1,0 +1,10 @@
+uid: '000012'
+category: data_control
+order: 10
+text_ja: データのバックアップを定期的に実行していますか？
+text_en: ''
+type: text
+depends_on: []
+tags:
+- backup
+version: '2025-06-24'

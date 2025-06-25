@@ -52,9 +52,36 @@
 
 ## 参加方法 ✍️
 
+### 🔧 既存質問の修正
+
 1. **[docs/INDEX.md](docs/INDEX.md)** を開き、該当行の ✏️ をクリック  
-2. YAML を編集（または `questions/` に新規ファイル追加）  
-3. **Propose changes → Create Pull Request**  
+2. GitHub上で該当YAMLファイルが開かれるので「Edit this file」をクリック  
+3. 質問文や設定を修正  
+4. **Propose changes → Create Pull Request**  
+
+### ➕ 新規質問の追加
+
+1. **[questions/](questions/)** ディレクトリを開く  
+2. **Add file → Create new file** をクリック  
+3. ファイル名を `000XXX.yml` 形式で入力（例：`000010.yml`）  
+4. 以下のテンプレートに従ってYAMLを記述：
+
+```yaml
+uid: '000010'
+category: access_control  # categories.yamlに存在するキー
+order: 100               # カテゴリ内での表示順（4桁推奨）
+text_ja: あなたの質問文をここに記載してください
+text_en: Your question text here (optional)
+type: text               # text, select, number など
+depends_on: []           # 依存する質問のuid配列（例：['000001']）
+tags: []                 # 任意のタグ（例：[audit, compliance]）
+version: '2025-01-15'    # 作成日
+```
+
+5. **Propose new file → Create Pull Request**  
+
+### 📋 共通手順
+
 4. CI が Lint と INDEX 再生成を行い、ステータスが表示されます  
 5. レビュー後 **Merge** されると main ブランチに即反映されます
 
@@ -83,6 +110,7 @@
 
 ## ロードマップ 🗺
 
+  - [ ] GitHub Issue/PR テンプレートの作成
 - [ ] GitHub Pages (MkDocs + DataTables) で検索 UI  
 - [ ] Excel / CSV エクスポート  
 - [ ] プロファイル別サブセット（SaaS / Finance など）  

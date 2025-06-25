@@ -1,0 +1,5 @@
+category,order,text_ja,text_en,type,depends_on,tags,version
+access_control,10,多要素認証 (MFA) を必須にしていますか？,,text,,security,2025-06-24
+access_control,20,MFA で利用している要素を選択してください（SMS、TOTP、FIDO2 等）。,,text,,mfa,2025-06-24
+data_control,10,データのバックアップを定期的に実行していますか？,,text,,backup,2025-06-24
+data_control,20,バックアップデータの復旧テストを実施していますか？,,text,,backup testing,2025-06-24 
