@@ -1,10 +1,45 @@
-- key: access_control
+- key: governance_risk
   order: 10
-  name_ja: アクセス制御
-  name_en: Access Control
-  description: 認証・認可・アカウント管理に関するコントロール。
-- key: data_control
+  name_ja: ガバナンス・リスク管理
+  name_en: Governance & Risk Management
+  description: 組織方針・計画・リスク評価など統制基盤を確立
+- key: personnel_organization
   order: 20
-  name_ja: データ管理
-  name_en: Data Control
-  description: データ保管、削除、バックアップ戦略など。
+  name_ja: 人的・組織セキュリティ
+  name_en: Personnel & Organizational Security
+  description: 従業員の身元確認・教育・離職時手続を管理
+- key: physical_environment
+  order: 30
+  name_ja: 物理・環境セキュリティ
+  name_en: Physical & Environmental Security
+  description: DC・オフィス入退室と設備冗長・災害対策
+- key: technical_security
+  order: 40
+  name_ja: 技術的セキュリティ管理
+  name_en: Technical Security Controls
+  description: 認証・アクセス制御・暗号化・監査を実装
+- key: application_sdlc
+  order: 50
+  name_ja: アプリケーションセキュリティ・SDLC
+  name_en: Application Security & SDLC
+  description: 開発プロセスと構成・脆弱性管理で品質確保
+- key: operations_monitoring
+  order: 60
+  name_ja: 運用・モニタリング
+  name_en: Operations & Monitoring
+  description: 障害対応・性能監視・計画保守で安定運用
+- key: data_lifecycle
+  order: 70
+  name_ja: データライフサイクル管理
+  name_en: Data Lifecycle Management
+  description: 取得〜消去までの暗号化・整合性・DRを統合
+- key: service_quality_continuity
+  order: 80
+  name_ja: サービス品質・継続性
+  name_en: Service Quality & Continuity
+  description: SLA指標とBCP/DRで可用性・拡張性を保証
+- key: others
+  order: 90
+  name_ja: その他
+  name_en: Others
+  description: データ登録用に用意した一時的なカテゴリ

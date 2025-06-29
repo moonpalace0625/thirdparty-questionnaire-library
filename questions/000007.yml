@@ -1,9 +1,0 @@
-uid: '000007'
-category: data_control
-order: 30
-text_ja: バックアップは何日ごとに取得していますか？
-text_en: ''
-type: text
-depends_on: []
-tags: []
-version: '2025-06-24'

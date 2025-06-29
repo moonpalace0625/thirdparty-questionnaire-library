@@ -1,9 +1,0 @@
-uid: '000002'
-category: access_control
-order: 20
-text_ja: MFA で利用している要素を選択してください（SMS、TOTP、FIDO2 等）。
-text_en: ''
-type: text
-depends_on: []
-tags: []
-version: '2025-06-24'

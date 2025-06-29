@@ -1,9 +1,0 @@
-uid: '000005'
-category: data_control
-order: 10
-text_ja: 契約終了時にデータを返却できますか？
-text_en: ''
-type: text
-depends_on: []
-tags: []
-version: '2025-06-24'

@@ -22,6 +22,38 @@ import pathlib
 import sys
 from datetime import datetime
 
+def load_valid_categories(categories_file):
+    """categories.yamlから有効なカテゴリを読み込む"""
+    try:
+        with open(categories_file, 'r', encoding='utf-8') as f:
+            categories = yaml.safe_load(f)
+        return [cat['key'] for cat in categories if cat.get('key')]
+    except Exception as e:
+        print(f"エラー: categories.yamlの読み込みに失敗しました: {e}")
+        return []
+
+def validate_categories(csv_file_path, valid_categories):
+    """CSVファイルのカテゴリを事前に検証"""
+    invalid_categories = set()
+    
+    with open(csv_file_path, 'r', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        
+        for row in reader:
+            category = row.get('category', '').strip()
+            if category and category not in valid_categories:
+                invalid_categories.add(category)
+    
+    if invalid_categories:
+        print("エラー: 以下の未定義カテゴリが含まれています:")
+        for cat in sorted(invalid_categories):
+            print(f"  - {cat}")
+        print(f"\n有効なカテゴリ: {', '.join(valid_categories)}")
+        print("\ncategories.yamlに新しいカテゴリを追加するか、CSVファイルを修正してください。")
+        return False
+    
+    return True
+
 def get_next_uid(questions_dir):
     """次のUIDを生成する"""
     existing_files = list(questions_dir.glob('*.yml'))
@@ -50,7 +82,17 @@ def csv_to_yaml(csv_file_path):
     """CSVファイルをYAMLファイルに変換"""
     base_dir = pathlib.Path(__file__).resolve().parents[1]
     questions_dir = base_dir / 'questions'
+    categories_file = base_dir / 'categories.yaml'
     questions_dir.mkdir(exist_ok=True)
+    
+    # カテゴリの検証
+    valid_categories = load_valid_categories(categories_file)
+    if not valid_categories:
+        print("エラー: 有効なカテゴリが見つかりません")
+        return False
+    
+    if not validate_categories(csv_file_path, valid_categories):
+        return False
     
     with open(csv_file_path, 'r', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
@@ -86,6 +128,8 @@ def csv_to_yaml(csv_file_path):
                          sort_keys=False)
             
             print(f"作成しました: {yaml_file_path}")
+    
+    return True
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -97,5 +141,8 @@ if __name__ == "__main__":
         print(f"エラー: ファイルが見つかりません: {csv_file}")
         sys.exit(1)
     
-    csv_to_yaml(csv_file)
-    print("変換完了!") 
+    if csv_to_yaml(csv_file):
+        print("変換完了!")
+    else:
+        print("変換に失敗しました。")
+        sys.exit(1) 

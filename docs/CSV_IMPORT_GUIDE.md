@@ -66,6 +66,7 @@ python scripts/build_index.py
 - **空の行はスキップされます** - categoryまたはtext_jaが空の場合
 - **既存ファイルは上書きされません** - 新しいUIDが自動生成されます
 - **依存関係やタグは複数指定可能** - カンマ区切りで入力してください
+- **カテゴリ検証が行われます** - `categories.yaml`に定義されていないカテゴリがあるとエラーになります
 
 ## 例
 
@@ -84,8 +85,27 @@ data_control,10,データのバックアップを取っていますか？,Do you
 ls -la my_questions.csv
 ```
 
-### エラー: カテゴリが存在しません
-`categories.yaml` で有効なカテゴリを確認してください。新しいカテゴリを追加する場合は、先にそちらを更新してください。
+### エラー: 未定義カテゴリが含まれています
+```
+エラー: 以下の未定義カテゴリが含まれています:
+  - security_policy
+  - compliance
+```
+
+このエラーが発生した場合：
+
+1. **既存カテゴリを使用する**: `categories.yaml`で定義済みのカテゴリに変更
+2. **新しいカテゴリを追加する**: `categories.yaml`に新しいカテゴリを追加してから変換
+
+#### 新しいカテゴリの追加方法
+```yaml
+# categories.yamlに追加
+- key: security_policy
+  order: 30
+  name_ja: セキュリティポリシー
+  name_en: Security Policy
+  description: セキュリティポリシーに関する管理項目。
+```
 
 ### 文字化け
 CSVファイルをUTF-8エンコーディングで保存してください。 
